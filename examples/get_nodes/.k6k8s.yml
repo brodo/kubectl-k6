@@ -1,0 +1,6 @@
+---
+env:
+  K6_PROMETHEUS_RW_SERVER_URL: http://prom-prometheus.monitoring.svc.cluster.local:9090/api/v1/write
+  K6_PROMETHEUS_RW_TREND_STATS: p(95),p(99),min,max,avg,count,sum
+  TARGET: https://sqa-k6.moneo2dev.ifm-sw.net
+  TREE_DEPTH: 9

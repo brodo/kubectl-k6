@@ -1,0 +1,4 @@
+env:
+  TARGET: http://to-do-demo.to-do-demo.svc.cluster.local:8080
+  K6_PROMETHEUS_RW_SERVER_URL: http://prom-prometheus.monitoring.svc.cluster.local:9090/api/v1/write
+  K6_PROMETHEUS_RW_TREND_STATS: p(95),p(99),min,max,avg,count,sum
