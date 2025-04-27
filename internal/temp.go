@@ -7,7 +7,7 @@ import (
 )
 
 func CreateTempFolder(srcPath string) (error, string) {
-	tmpDir, err := os.MkdirTemp(os.TempDir(), "k6k8s-")
+	tmpDir, err := os.MkdirTemp(os.TempDir(), "kubectl-k6-")
 	if err != nil {
 		return err, ""
 	}

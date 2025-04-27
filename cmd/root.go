@@ -25,13 +25,13 @@ var k8sConfig *rest.Config
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "k6k8s",
+	Use:   "kubectl-k6",
 	Short: "Run k6 tests on a remote k8s server",
 	Long: `This script can run k6 tests on a remote k8s server if a k6 operator is installed on that cluster.
 For example:
 
-k6k8s run myTestScript.js
-k6k8s run myScriptFolder # Runs all the *.js files in this directory sequentially
+kubectl-k6 run myTestScript.js
+kubectl-k6 run myScriptFolder # Runs all the *.js files in this directory sequentially
 `,
 }
 
@@ -54,9 +54,9 @@ func init() {
 	cobra.OnInitialize(initConfig)
 
 	rootCmd.PersistentFlags().StringVar(&k8sConfigPath, "k8scfg", "", "k8s config file path (default is $HOME/.kube/config)")
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "k6k8s config file path (default is $CWD/.k6k8s.yml)")
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "kubectl-k6 config file path (default is $CWD/.kubectl-k6.yml)")
 	if version == "" {
-		panic("Version was not set when building k6k8s binary!")
+		panic("Version was not set when building kubectl-k6 binary!")
 	}
 	rootCmd.Version = version
 	home, err := os.UserHomeDir()
@@ -88,7 +88,7 @@ func initConfig() {
 		cobra.CheckErr(err)
 		viper.AddConfigPath(cwd)
 		viper.SetConfigType("yaml")
-		viper.SetConfigName(".k6k8s.yml")
+		viper.SetConfigName(".kubectl-k6.yml")
 	}
 
 	if err := viper.ReadInConfig(); err == nil {

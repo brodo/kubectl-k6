@@ -34,7 +34,7 @@ var runCmd = &cobra.Command{
 	Long: `This script can run k6 tests on a remote k8s server if a k6 operator is installed on that cluster.
 For example:
 
-k6k8s run myTestScript.js`,
+kubectl-k6 run myTestScript.js`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		loadRunConfig()
 		scriptPath := args[0]

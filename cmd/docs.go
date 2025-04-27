@@ -12,7 +12,7 @@ import (
 // docsCmd represents the docs command
 var docsCmd = &cobra.Command{
 	Use:   "docs",
-	Short: "Generate the markdown documentation for k6k8s",
+	Short: "Generate the markdown documentation for kubectl-k6",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
