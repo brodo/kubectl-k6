@@ -75,7 +75,6 @@ The Plugin can run k6 with certain environment variables.
 | CLI Argument         | `--env` (`-e`) |
 | Environment Variable | K6K8S_ENV      |
 | Configuration File   | `env` (object) |
-| Default Value        | empty object   |
 
 #### Examples
 
@@ -132,7 +131,6 @@ If your k8s cluster needs an image pull secret to pull the image, you can provid
 | CLI Argument          | `--ips` (`-s`) |
 | Environment Variable  | K6K8S_IPS      |
 | Configuration File    | `ips` (string) |
-| Default Value         | `ifm-jfrog`    |
 
 1. CLI argument:
     ```bash
