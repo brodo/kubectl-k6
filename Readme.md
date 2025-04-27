@@ -193,8 +193,6 @@ The test ID is - as the name suggests - an ID that identifies a single test run.
 
 ![A screenshot of Grafana](docs/grafana.png)
 
-**Please always set a test id, eiter in the test itself or using the `--arguments` flag.** 
-
 For example:
 ```
 kubectl k6 run myScript.js --arguments '--tag testid=MyTest-2024-05-03'
@@ -226,7 +224,7 @@ import { myFunction } from './myFunction.js';
 import data from './data.json' with { type: 'json' };
  ```
 
-k6 itself does not support TypeScript, but k6k8s transpiles TypeScript to JavaScript in the bundling step.
+k6 itself does not support TypeScript, but this plugin transpiles TypeScript to JavaScript in the bundling step.
 
 ### Template Variables
 
