@@ -241,7 +241,7 @@ You can provide a go template string (https://pkg.go.dev/text/template) here. Se
 	runCmd.Flags().IntVarP(&config.parallelism, "parallelism", "p", 1, "How many times a script should be run in parallel. Every parallel execution starts a k8s job.")
 
 	runCmd.Flags().StringVarP(&config.dockerImage, "image", "i", "", "The OCI image to use for running k6")
-	runCmd.Flags().StringVarP(&config.dockerImage, "ips", "s", "ifm-jfrog", "The name of the secret to use for pulling the OCI image. This is only used if the image is private.")
+	runCmd.Flags().StringVarP(&config.dockerImage, "ips", "s", "", "The name of the secret to use for pulling the OCI image. This is only used if the image is private.")
 	runCmd.Flags().BoolVarP(&config.minify, "minify", "m", false, "Minify Javascript before uploading it to the cluster")
 	runCmd.Flags().StringVarP(&config.folder, "folder", "f", "", "Uploads the provided a folder into a persistent volume on k8s.")
 
@@ -249,7 +249,7 @@ You can provide a go template string (https://pkg.go.dev/text/template) here. Se
 	viper.SetDefault("namespace", defaultNamespace)
 	viper.SetDefault("arguments", "")
 	viper.SetDefault("env", make(internal.K6Environment))
-	viper.SetDefault("ips", "ifm-jfrog")
+	viper.SetDefault("ips", "")
 	viper.SetDefault("image", "")
 	viper.SetDefault("parallelism", 1)
 	viper.SetDefault("minify", false)
