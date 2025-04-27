@@ -228,9 +228,9 @@ func init() {
 
 	const defaultNamespace = "k6-operator-system"
 	runCmd.Flags().StringVarP(&config.namespace, "namespace", "n", defaultNamespace, "k8s namespace to run in")
-	const defaultK6ArgumentsTemplate = `--out experimental-prometheus-rw`
+
 	runCmd.Flags().StringVarP(&config.k6Arguments, "arguments", "a",
-		defaultK6ArgumentsTemplate,
+		"",
 		`runs k6 with the given arguments. 
 You can provide a go template string (https://pkg.go.dev/text/template) here. See the documentation for supported variables.`)
 
@@ -247,7 +247,7 @@ You can provide a go template string (https://pkg.go.dev/text/template) here. Se
 
 	cobra.CheckErr(viper.BindPFlags(runCmd.Flags()))
 	viper.SetDefault("namespace", defaultNamespace)
-	viper.SetDefault("arguments", defaultK6ArgumentsTemplate)
+	viper.SetDefault("arguments", "")
 	viper.SetDefault("env", make(internal.K6Environment))
 	viper.SetDefault("ips", "ifm-jfrog")
 	viper.SetDefault("image", "")

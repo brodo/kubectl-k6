@@ -22,27 +22,7 @@ using the currently active k8s context. You can set the context using
 You can specify the path to the k8s config file using the [`--k8scfg` flag](docs/index) or the `KUBECONFIG` environment
 variable.
 
-### Prometheus
-`k6` needs to know which Prometheus server it should send the metrics to. 
-Two k6 environment variables control this behavior:
-
-- K6_PROMETHEUS_RW_SERVER_URL
-- K6_PROMETHEUS_RW_TREND_STATS 
-
-You **need to be set these**, and there are three ways to do this in k6k8s:
-
-1. Using the `--env` flag: `kubectl k6 run myScript.js --env 'K6_PROMETHEUS_RW_SERVER_URL=http://my.prometheus.svc.cluster.local:9090/api/v1/write,K6_PROMETHEUS_RW_TREND_STATS="p(95),p(99),min,max,avg,count,sum"'`
-2. Using a config file. The plugin will look for a file called `.k6k8s.yml` in the current directory. You can also use the [`--cfg` flag](docs/index). Here is an example `.k6k8s.yml`:
-    ```yml
-    env:
-      K6_PROMETHEUS_RW_SERVER_URL: http://my.prometheus.svc.cluster.local:9090/api/v1/write
-      K6_PROMETHEUS_RW_TREND_STATS: p(95),p(99),min,max,avg,count,sum
-    ```
-3. Using an env variable: `K6K8S_ENV='K6_PROMETHEUS_RW_SERVER_URL=http://my.prometheus.svc.cluster.local:9090/api/v1/write,"K6_PROMETHEUS_RW_TREND_STATS=p(95),p(99),min,max,avg,count,sum"' k8ks run myScript.js` - if your value contains a comma, you need to wrap the key-value-pair in quotes.
-
-You might also want to check out [the k6 Prometheus tutorial](https://k6.io/docs/results-output/real-time/prometheus-remote-write/).
-
-## Running the plugin
+## Running a k6 script
 
 If you have a valid k8s config, have selected the proper context, and have set up the k6 environment variables, you can
 run a script on the cluster using the following command:
@@ -69,7 +49,6 @@ The plugin can provide command line arguments to k6.
 | CLI Argument         | `--arguments` (`-a`)               |
 | Environment Variable | `K6K8S_ARGUMENTS`                  |
 | Configuration File   | `arguments` (string)               |
-| Default Value        | `--out experimental-prometheus-rw` |
 
 #### Examples
 
