@@ -98,6 +98,11 @@ func (kc *K8sClient) CreateConfigMap(ctx context.Context, sps *ScriptProperties,
 	return err
 }
 
+func (kc *K8sClient) GetConfigMap(ctx context.Context, name string) (*v1.ConfigMap, error) {
+	m, err := kc.clientSet.CoreV1().ConfigMaps(kc.namespace).Get(ctx, name, meta.GetOptions{})
+	return m, err
+}
+
 func (kc *K8sClient) DeleteConfigMap(ctx context.Context, configMapName string) error {
 	deletePolicy := meta.DeletePropagationForeground
 	if err := kc.clientSet.CoreV1().ConfigMaps(kc.namespace).Delete(ctx, configMapName, meta.DeleteOptions{
