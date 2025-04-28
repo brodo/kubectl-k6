@@ -212,10 +212,6 @@ You can add the current time to the test id like this:
 kubectl k6 run myScript.js --arguments '--tag testid=MyScript-{{.Time.Format .FormatRFC3339}}'
 ```
 
-
-### Parallelism
-You can run k6 on multiple pods in parallel using the `--parallelism` flag. This will create a new pod for each k6 run. **The 'parallelism' argument cannot be larger than maximum VUs in the script.**
-
 ### k6 Extensions & Custom Images
 
 To use k6 extensions, you need to provide a custom OCI image that is accessible to the k8s cluster. You can pass the `--image` flag to the run command to specify the image tag. 
