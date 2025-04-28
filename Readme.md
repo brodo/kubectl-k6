@@ -3,6 +3,15 @@
 This plugin allows you to use the [k6 k8s operator](https://github.com/grafana/k6-operator)
 more conveniently.
 
+## Features
+
+- Minifies/Compiles TypeScript and JavaScript and uploads it as a ConfigMap.
+- Creates the `TestRun` custom resource needed to start a test job.
+- Watches test execution end reports errors happening in the run- and init-containers and the operator.
+- Streams the run-container's logs to the console.
+- If an error happens somewhere, return a non-zero exit code (good for CI).
+- After execution, the plugin deletes the custom resource and the config map.
+
 ## Installation
 
 ### Go
